@@ -20,6 +20,10 @@ body{
 	background:#2980b9;
 }
 
+.header{
+	text-align: center;
+}
+
 .hand-selector{
 	padding: 5px;
 	height: 120px;
