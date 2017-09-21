@@ -4,36 +4,49 @@ body{
 	margin: 0;
 }
 
-#cutter-selector, #paper-selector, #player-view{
+#rock-selector, #paper-selector, #player-view{
 	margin-right: 50px;
 }
 
+#rock-selector{
+	background:#e74c3c;
+}
+
+#paper-selector{
+	background: #27ae60;
+}
+
+#cutter-selector{
+	background:#2980b9;
+}
 
 .hand-selector{
 	padding: 5px;
-	height: 110px;
-	width: 450px;
+	height: 120px;
+	width: 460px;
 	margin: auto;
 	margin-top: 80px;
 }
 
 .game{
-	width: 650px;
-	height: 300px; 
+	width: 690px;
+	height: 320px; 
 	margin: auto;
 }
 
 .small-view{
-	width: 100px;
-	height: 100px;
+	padding: 20px;
+	width: 80px;
+	height: 80px;
 	border-radius: 20px;
 	background:#7f8c8d;
 	float: left;
 }
 
 .view{
-	width: 300px;
-	height: 300px;
+	padding: 20px;
+	width: 280px;
+	height: 280px;
 	border-radius: 20px;
 	background:#7f8c8d;
 	float: left;
