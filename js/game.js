@@ -6,6 +6,9 @@ var playerSelectedDivView;
 var enemySelectedImg;
 var enemySelectedDivView;
 
+var playerHand;
+var enemyHand;
+
 window.onload=function(){
 	electedImage=false;
 
@@ -25,6 +28,7 @@ function PlayerHover(imageName){
 function PlayerClick(imageName){
 	if(!selectedImage){
 		selectedImage=true;
+		playerHand=imageName;
 		playerSelectedImg.src="images/"+imageName+".png";
 		playerSelectedDivView.style="animation: select linear 0.1s";
 		RandomizeEnemy();
@@ -37,18 +41,47 @@ function RemovePlayerImage(){
 	}
 }
 
+function RemoveEnemyImage(){
+	if(!selectedImage){
+		enemySelectedImg.src="images/invisible.png";
+	}
+}
+
 function RandomizeEnemy(){
 	for(i=0;i<10;i++){
 		setTimeout(function(last){
 				var hand=GetRandomHand();
 				if(last){
+					enemyHand=hand;
 					enemySelectedImg.src="images/"+hand+".png";
 					enemySelectedDivView.style="animation: select linear 0.1s";
+					CheckMatch();
 				}
 				else
 					enemySelectedImg.src="images/"+hand+"-hover.png";
 		},i*100,i==9);
 	}
+}
+
+function CheckMatch(){
+	if(playerHand==enemyHand){
+		alert("empate");
+	}else{
+		if((playerHand=="rock" & enemyHand=="cutter") || (playerHand=="cutter" & enemyHand=="paper") || (playerHand=="paper" & enemyHand=="rock"))
+			alert("você ganhou");
+		else{
+			alert("você perdeu");
+		}
+	}
+	Reset();
+}
+
+function Reset(){
+	selectedImage=false;
+	RemovePlayerImage();
+	RemoveEnemyImage();
+	playerHand="";
+	enemyHand="";
 }
 
 function GetRandomHand(){
