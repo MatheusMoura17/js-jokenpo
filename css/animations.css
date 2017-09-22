@@ -12,3 +12,21 @@
 		opacity: 1;
 	}
 }
+
+@keyframes colors{
+	0%{
+		background:#ecf0f1;
+	}
+	25%{
+		background:#1abc9c;
+	}
+	50%{
+		background:#e67e22;
+	}
+	75%{
+		background:#2ecc71;
+	}
+	100%{
+		background:#95a5a6;
+	}
+}
