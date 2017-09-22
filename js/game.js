@@ -34,7 +34,7 @@ function PlayerClick(imageName){
 		selectedImage=true;
 		playerHand=imageName;
 		playerSelectedImg.src="images/"+imageName+".png";
-		playerSelectedDivView.style="animation: select linear 0.1s";
+		playerSelectedDivView.classList.add("select-animation");
 		RandomizeEnemy();
 	}
 }
@@ -59,7 +59,7 @@ function RandomizeEnemy(){
 				if(last){
 					enemyHand=hand;
 					enemySelectedImg.src="images/"+hand+".png";
-					enemySelectedDivView.style="animation: select linear 0.1s";
+					enemySelectedDivView.classList.add("select-animation");
 					setTimeout(CheckMatch,500);
 				}
 				else
@@ -86,6 +86,8 @@ function ResetMatch(){
 	selectedImage=false;
 	RemovePlayerImage();
 	RemoveEnemyImage();
+	enemySelectedDivView.classList.remove("select-animation");
+	playerSelectedDivView.classList.remove("select-animation");
 	playerHand="";
 	enemyHand="";
 }
