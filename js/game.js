@@ -9,6 +9,8 @@ var enemySelectedDivView;
 var playerHand;
 var enemyHand;
 
+var roundMessage;
+
 window.onload=function(){
 	electedImage=false;
 
@@ -17,6 +19,8 @@ window.onload=function(){
 
 	enemySelectedImg     = document.getElementById("enemy-selected-image");
 	enemySelectedDivView = document.getElementById("enemy-view");
+
+	roundMessage=document.getElementById("round-message");
 };
 
 function PlayerHover(imageName){
@@ -48,6 +52,7 @@ function RemoveEnemyImage(){
 }
 
 function RandomizeEnemy(){
+	roundMessage.textContent="O oponente está jogando...";
 	for(i=0;i<10;i++){
 		setTimeout(function(last){
 				var hand=GetRandomHand();
@@ -55,7 +60,7 @@ function RandomizeEnemy(){
 					enemyHand=hand;
 					enemySelectedImg.src="images/"+hand+".png";
 					enemySelectedDivView.style="animation: select linear 0.1s";
-					CheckMatch();
+					setTimeout(CheckMatch,500);
 				}
 				else
 					enemySelectedImg.src="images/"+hand+"-hover.png";
@@ -65,18 +70,19 @@ function RandomizeEnemy(){
 
 function CheckMatch(){
 	if(playerHand==enemyHand){
-		alert("empate");
+		roundMessage.textContent="Empatou!";
 	}else{
 		if((playerHand=="rock" & enemyHand=="cutter") || (playerHand=="cutter" & enemyHand=="paper") || (playerHand=="paper" & enemyHand=="rock"))
-			alert("você ganhou");
+			roundMessage.textContent="Você ganhou!";
 		else{
-			alert("você perdeu");
+			roundMessage.textContent="Você perdeu!";
 		}
 	}
-	Reset();
+	setTimeout(ResetMatch,1500);
 }
 
-function Reset(){
+function ResetMatch(){
+	roundMessage.textContent="É sua vez de jogar";
 	selectedImage=false;
 	RemovePlayerImage();
 	RemoveEnemyImage();
