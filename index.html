@@ -22,13 +22,13 @@
 	</div>
 
 	<div class="hand-selector">
-		<div onmouseover="PlayerHoverRock();" onclick="PlayerClickRock();" onmouseout="DefineInvisible();" id="rock-selector" class="small-view">
+		<div onmouseover="PlayerHover('rock');" onclick="PlayerClick('rock');" onmouseout="RemovePlayerImage();" id="rock-selector" class="small-view">
 			<img src="images/rock.png" width="80" height="80">
 		</div>
-		<div onmouseover="PlayerHoverPaper();" onclick="PlayerClickPaper();" onmouseout="DefineInvisible();" id="paper-selector" class="small-view">
+		<div onmouseover="PlayerHover('paper');" onclick="PlayerClick('paper');" onmouseout="RemovePlayerImage();" id="paper-selector" class="small-view">
 			<img src="images/paper.png" width="80" height="80">
 		</div>
-		<div onmouseover="PlayerHoverCutter();" onclick="PlayerClickCutter();" onmouseout="DefineInvisible();" id="cutter-selector" class="small-view">
+		<div onmouseover="PlayerHover('cutter');" onclick="PlayerClick('cutter');" onmouseout="RemovePlayerImage();" id="cutter-selector" class="small-view">
 			<img src="images/cutter.png" width="80" height="80">
 		</div>
 	</div>

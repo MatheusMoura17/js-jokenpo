@@ -1,80 +1,63 @@
-var selectedImage=false;
+var selectedImage;
 
-function PlayerHoverRock(){
+var playerSelectedImg;
+var playerSelectedDivView;
+
+var enemySelectedImg;
+var enemySelectedDivView;
+
+window.onload=function(){
+	electedImage=false;
+
+	playerSelectedImg     = document.getElementById("player-selected-image");
+	playerSelectedDivView = document.getElementById("player-view");
+
+	enemySelectedImg     = document.getElementById("enemy-selected-image");
+	enemySelectedDivView = document.getElementById("enemy-view");
+};
+
+function PlayerHover(imageName){
 	if(!selectedImage){
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/rock-hover.png";
+		playerSelectedImg.src = "images/"+imageName+"-hover.png";
 	}
 }
 
-function PlayerHoverPaper(){
-	if(!selectedImage){
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/paper-hover.png";
-	}
-}
-
-function PlayerHoverCutter(){
-	if(!selectedImage){
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/cutter-hover.png";
-	}
-}
-
-function PlayerClickRock(){
+function PlayerClick(imageName){
 	if(!selectedImage){
 		selectedImage=true;
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		var view=document.getElementById("player-view");
-		playerSelectedImage.src="images/rock.png";
-		view.style="animation: select linear 0.1s";
+		playerSelectedImg.src="images/"+imageName+".png";
+		playerSelectedDivView.style="animation: select linear 0.1s";
 		RandomizeEnemy();
 	}
 }
 
-function PlayerClickPaper(){
+function RemovePlayerImage(){
 	if(!selectedImage){
-		selectedImage=true;
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/paper.png";
-		RandomizeEnemy();
-	}
-}
-
-function PlayerClickCutter(){
-	if(!selectedImage){
-		selectedImage=true;
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/cutter.png";
-		RandomizeEnemy();
-	}
-}
-
-function DefineInvisible(){
-	if(!selectedImage){
-		var playerSelectedImage=document.getElementById("player-selected-image");
-		playerSelectedImage.src="images/invisible.png";
+		playerSelectedImg.src="images/invisible.png";
 	}
 }
 
 function RandomizeEnemy(){
-	var enemySelectedImage=document.getElementById("enemy-selected-image");
-	var selected;
 	for(i=0;i<10;i++){
 		setTimeout(function(last){
-				var random=Math.floor((Math.random() * 3) + 1);
-				switch(random){
-					case 1:	selected="rock";  break;
-					case 2: selected="paper"; break;
-					case 3: selected="cutter";break;
-				}
+				var hand=GetRandomHand();
 				if(last){
-					enemySelectedImage.src="images/"+selected+".png";
-					var view=document.getElementById("enemy-view");
-					view.style="animation: select linear 0.1s";
+					enemySelectedImg.src="images/"+hand+".png";
+					enemySelectedDivView.style="animation: select linear 0.1s";
 				}
 				else
-					enemySelectedImage.src="images/"+selected+"-hover.png";
+					enemySelectedImg.src="images/"+hand+"-hover.png";
 		},i*100,i==9);
 	}
+}
+
+function GetRandomHand(){
+	var hand;
+	var random=Math.floor((Math.random() * 3) + 1);
+	switch(random){
+		case 1:	hand="rock";  break;
+		case 2: hand="paper"; break;
+		case 3: hand="cutter";break;
+	}
+	return hand;
 }
