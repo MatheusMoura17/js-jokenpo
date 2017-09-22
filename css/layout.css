@@ -45,6 +45,11 @@ body{
 	border-radius: 20px;
 	background:#7f8c8d;
 	float: left;
+	transition: transform 0.4s;
+}
+
+.small-view:hover{
+	transform: scale(1.2,1.2);
 }
 
 .view{
